@@ -43,19 +43,13 @@ public class UsuariosDAOImpl implements IUsuariosDAO{
 //    }
 
     @Override
-    public Users buscarUsuarioAprobado(boolean enable) {
+    public List<Users> buscarUsuarioAprobado(boolean enable) {
         return usuariosJPA.findByEnable(enable);
     }
 
     @Override
     public Users buscarUsuarioPorEmailAndPasswd(String email, String passwd) {
         return usuariosJPA.findByCorreoAndPassword(email, passwd);
-//        Users usuario = usuariosJPA.findByCorreo(email);
-//        System.out.println("estes el es usuario" + usuario);
-//        if(usuario.getPassword() ==  passwd){
-//            return usuario;
-//        }
-//        return null;
     }
 
     @Override

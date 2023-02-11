@@ -37,8 +37,12 @@ public class UsuariosController {
         return usuariosService.buscarUsuarioPorCorreo(correo);
     }
     @GetMapping("/enable/{enable}")
-    public Users buscarUsuarioAprobado(@PathVariable("enable") Boolean enable) {
+    public List<Users> buscarUsuarioAprobado(@PathVariable("enable") Boolean enable) {
         return usuariosService.buscarUsuarioAprobado(enable);
+    }
+    @PutMapping("/aprobarUsuario/{idUsuario}")
+    public boolean aprobarUsuario(@PathVariable("idUsuario") Integer idUsuario) {
+        return usuariosService.aprobarUsuario(idUsuario);
     }
     @PostMapping("/save")
     public boolean guardarUsuario(@RequestBody Users usuario) {

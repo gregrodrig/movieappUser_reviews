@@ -47,14 +47,22 @@ public class IUsuariosServiceImpl implements IUsuariosService{
     }
 
     @Override
-    public Users buscarUsuarioAprobado(boolean enable) {
+    public List<Users> buscarUsuarioAprobado(boolean enable) {
         return usuariosDAO.buscarUsuarioAprobado(enable);
     }
-
-//    @Override
-//    public Users buscarUsuarioPorEmail(String email) {
-//        return usuariosDAO.buscarUsuarioPorEmail(email);
-//    }
+    @Override
+    public boolean aprobarUsuario(Integer idUsuario) {
+    boolean results = false;
+    Users usuario = usuariosDAO.buscarUsuarioPorId(idUsuario);
+    if (usuario != null){
+        usuario.setEnable(true);
+        usuariosDAO.actualizarUsuario(usuario);
+        results = true;
+    } else {
+        results =  false;
+    }
+    return results;
+   }
 
     @Override
     public boolean guardarUsuario(Users usuario) {
