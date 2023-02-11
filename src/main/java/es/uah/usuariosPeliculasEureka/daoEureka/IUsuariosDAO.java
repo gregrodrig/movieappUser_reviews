@@ -8,8 +8,7 @@ public interface IUsuariosDAO {
     Users buscarUsuarioPorId(Integer idUsuario);
     Users buscarUsuarioPorNombre(String nombre);
     Users buscarUsuarioPorCorreo(String correo);
-   // Users buscarUsuarioPorEmail(String email);
-    Users buscarUsuarioAprobado(boolean enable);
+    List<Users> buscarUsuarioAprobado(boolean enable);
     Users buscarUsuarioPorEmailAndPasswd(String email, String passwd);
     void guardarUsuario(Users usuario);
     void elimininarUsuario(Integer idUsuario);

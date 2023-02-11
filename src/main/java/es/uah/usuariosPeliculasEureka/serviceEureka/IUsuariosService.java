@@ -8,10 +8,10 @@ public interface IUsuariosService {
     Users buscarUsuarioPorId(Integer idUsuario);
     Users buscarUsuarioPorNombre(String nombre);
     Users buscarUsuarioPorCorreo(String correo);
-    Users buscarUsuarioAprobado(boolean enable);
-   // Users buscarUsuarioPorEmail(String email);
+    List<Users> buscarUsuarioAprobado(boolean enable);
     Users buscarUsuarioPorEmailAndPasswd(String email, String passwd);
     public boolean guardarUsuario(Users usuario);
     public boolean elimininarUsuario(Integer idUsuario);
     public boolean actualizarUsuario(Users usuario);
+    public boolean aprobarUsuario(Integer idUsuario);
 }
