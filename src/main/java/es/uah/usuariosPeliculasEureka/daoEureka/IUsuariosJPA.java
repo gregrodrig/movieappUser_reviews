@@ -10,4 +10,5 @@ public interface IUsuariosJPA extends JpaRepository<Users, Integer> {
     List<Users> findByEnable(boolean enable);
     //Users findBy(String email);
     Users findByCorreoAndPassword(String email, String passwd);
+    Users findByIdUsuario(Integer idUsuario);
 }

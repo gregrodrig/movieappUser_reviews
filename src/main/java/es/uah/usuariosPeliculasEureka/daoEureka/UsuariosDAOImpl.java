@@ -63,7 +63,15 @@ public class UsuariosDAOImpl implements IUsuariosDAO{
     }
 
     @Override
-    public void actualizarUsuario(Users usuario) {
-        usuariosJPA.save(usuario);
+    public boolean actualizarUsuario(Users usuario) {
+      Users old = usuariosJPA.findByIdUsuario(usuario.getIdUsuario());
+      usuario.setCritica(old.getCritica());
+      usuario.setEnable(old.isEnable());
+//      usuario.setPassword(old.getPassword());
+        if ( usuario.getRoles() == null){
+            usuario.setRoles(old.getRoles());
+        }
+         usuariosJPA.save(usuario);
+        return true;
     }
 }

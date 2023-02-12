@@ -12,5 +12,5 @@ public interface IUsuariosDAO {
     Users buscarUsuarioPorEmailAndPasswd(String email, String passwd);
     void guardarUsuario(Users usuario);
     void elimininarUsuario(Integer idUsuario);
-    void actualizarUsuario(Users usuario);
+    boolean actualizarUsuario(Users usuario);
 }
