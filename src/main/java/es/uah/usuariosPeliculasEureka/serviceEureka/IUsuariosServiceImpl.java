@@ -88,10 +88,13 @@ public class IUsuariosServiceImpl implements IUsuariosService{
 
     @Override
     public boolean actualizarUsuario(Users usuario) {
-        if ( usuariosDAO.buscarUsuarioPorId(usuario.getIdUsuario()) != null) {
-            usuariosDAO.actualizarUsuario(usuario);
-            return true;
+        Users old = usuariosDAO.buscarUsuarioPorId(usuario.getIdUsuario());
+        usuario.setCritica(old.getCritica());
+        usuario.setEnable(old.isEnable());
+//        usuario.setPassword(old.getPassword());
+        if(usuario.getRoles()==null){
+            usuario.setRoles(old.getRoles());
         }
-        return false;
+        return usuariosDAO.actualizarUsuario(usuario);
     }
 }
