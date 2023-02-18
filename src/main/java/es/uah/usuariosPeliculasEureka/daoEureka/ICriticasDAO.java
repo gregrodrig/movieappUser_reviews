@@ -7,7 +7,8 @@ public interface ICriticasDAO {
     List<Criticas> buscarTodos();
     Criticas buscarCriticasPorId(Integer idCriticas);
     Criticas buscarNotas(Integer notas);
-    Criticas buscarCriticasPorUsuarios(Integer idUsuario);
+    List<Criticas> buscarCriticasPorUsuarios(Integer idUsuario);
+    List<Criticas> buscarCriticasPorIdPelicula(Integer idPelicula);
     Criticas buscarCriticasPorValoracion(String valoracion);
 
     void guardarCriticas(Criticas criticas);

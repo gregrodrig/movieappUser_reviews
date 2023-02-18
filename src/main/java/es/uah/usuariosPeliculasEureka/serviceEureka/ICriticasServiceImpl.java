@@ -28,8 +28,13 @@ public class ICriticasServiceImpl implements ICriticasService{
     }
 
     @Override
-    public Criticas buscarCriticasPorUsuarios(Integer idUsuario) {
+    public List<Criticas> buscarCriticasPorUsuarios(Integer idUsuario) {
         return criticasDAO.buscarCriticasPorUsuarios(idUsuario);
+    }
+
+    @Override
+    public List<Criticas> buscarCriticasPorIdPelicula(Integer idPelicula) {
+        return criticasDAO.buscarCriticasPorIdPelicula(idPelicula);
     }
 
     @Override

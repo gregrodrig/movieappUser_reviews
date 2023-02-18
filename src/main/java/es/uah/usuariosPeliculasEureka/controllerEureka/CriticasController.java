@@ -29,8 +29,12 @@ public class CriticasController {
     }
 
     @GetMapping("porUsuarios/{idUsuario}")
-    public Criticas buscarCriticasPorUsuarios(@PathVariable("idUsuario") Integer idUsuario) {
+    public List<Criticas> buscarCriticasPorUsuarios(@PathVariable("idUsuario") Integer idUsuario) {
         return criticasService.buscarCriticasPorUsuarios(idUsuario);
+    }
+    @GetMapping("porIdPelicula/{idPelicula}")
+    public List<Criticas> buscarCriticasPorIdPelicula(@PathVariable("idPelicula") Integer idPelicula) {
+        return criticasService.buscarCriticasPorIdPelicula(idPelicula);
     }
     @GetMapping("porValoracion/{valoracion}")
     public Criticas buscarCriticasPorValoracion(@PathVariable("valoracion") String valoracion) {

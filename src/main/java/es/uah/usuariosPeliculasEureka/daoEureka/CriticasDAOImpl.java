@@ -32,8 +32,13 @@ public class CriticasDAOImpl implements ICriticasDAO{
     }
 
     @Override
-    public Criticas buscarCriticasPorUsuarios(Integer idUsuario) {
+    public List<Criticas> buscarCriticasPorUsuarios(Integer idUsuario) {
         return criticasJPA.findByUsers_idUsuario(idUsuario);
+    }
+
+    @Override
+    public List<Criticas> buscarCriticasPorIdPelicula(Integer idPelicula) {
+        return criticasJPA.findByIdPelicula(idPelicula);
     }
 
     @Override

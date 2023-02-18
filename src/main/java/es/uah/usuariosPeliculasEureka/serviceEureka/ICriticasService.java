@@ -7,7 +7,8 @@ public interface ICriticasService {
     List<Criticas> buscarTodos();
     Criticas buscarCriticasPorId(Integer idCriticas);
     Criticas buscarNotas(Integer notas);
-    Criticas buscarCriticasPorUsuarios(Integer idUsuario);
+    List<Criticas> buscarCriticasPorUsuarios(Integer idUsuario);
+    List<Criticas> buscarCriticasPorIdPelicula(Integer idPelicula);
     Criticas buscarCriticasPorValoracion(String valoracion);
 
     boolean guardarCriticas(Criticas criticas);
