@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("criticas")
-@CrossOrigin
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CriticasController {
 
     @Autowired
@@ -23,34 +23,47 @@ public class CriticasController {
     public Criticas buscarCriticasPorId(@PathVariable("idCritica") Integer idCritica) {
         return criticasService.buscarCriticasPorId(idCritica);
     }
-    @GetMapping("nota/{nota}")
+    @GetMapping("/notaMedia/{idPelicula}")
+    public Integer notaMedia(@PathVariable("idPelicula") Integer idPelicula) {
+        Integer nota = 0;
+        List<Criticas> criticas = criticasService.buscarCriticasPorIdPelicula(idPelicula);
+        for (int i = 0; i < criticas.size(); i++) {
+            nota += criticas.get(i).getNota();
+        }
+        return nota / criticas.size();
+    }
+    @GetMapping("/nota/{nota}")
     public Criticas buscarNotas(@PathVariable("nota") Integer nota) {
         return criticasService.buscarNotas(nota);
     }
 
-    @GetMapping("porUsuarios/{idUsuario}")
+    @GetMapping("/porUsuarios/{idUsuario}")
     public List<Criticas> buscarCriticasPorUsuarios(@PathVariable("idUsuario") Integer idUsuario) {
         return criticasService.buscarCriticasPorUsuarios(idUsuario);
     }
-    @GetMapping("porIdPelicula/{idPelicula}")
+
+    @GetMapping("/porIdPelicula/{idPelicula}")
     public List<Criticas> buscarCriticasPorIdPelicula(@PathVariable("idPelicula") Integer idPelicula) {
         return criticasService.buscarCriticasPorIdPelicula(idPelicula);
     }
-    @GetMapping("porValoracion/{valoracion}")
+
+    @GetMapping("/porValoracion/{valoracion}")
     public Criticas buscarCriticasPorValoracion(@PathVariable("valoracion") String valoracion) {
         return criticasService.buscarCriticasPorValoracion(valoracion);
     }
+
     @PostMapping("/save")
     public boolean guardarCriticas(@RequestBody Criticas criticas) {
         return criticasService.guardarCriticas(criticas);
     }
+
     @PutMapping("/edit")
     public void actualizarCriticas(@RequestBody Criticas criticas) {
         criticasService.actualizarCriticas(criticas);
     }
+
     @DeleteMapping("/{idCriticas}")
     public void eliminarCriticas(@PathVariable("idCriticas") Integer idCriticas){
         criticasService.eliminarCriticas(idCriticas);
     }
-
 }
